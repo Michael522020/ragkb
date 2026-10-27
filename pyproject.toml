@@ -1,0 +1,13 @@
+[project]
+name = "ragkb"
+version = "1.0.0"
+description = "独立编写的 RAG 知识库：部门范围、文档入库、混合检索、流式问答"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

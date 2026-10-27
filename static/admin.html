@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAGKB 管理</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <strong>RAGKB 管理</strong>
+      <span id="who">未登录</span>
+    </div>
+    <nav>
+      <a href="/">问答端</a>
+      <button id="logout" class="ghost hidden" type="button">退出</button>
+    </nav>
+  </header>
+  <main class="main">
+    <section id="login" class="login-wrap card">
+      <h2>登录</h2>
+      <p class="muted">初始管理员 admin / Admin123! ，登录后请修改密码。</p>
+      <form id="login-form" class="stack">
+        <input id="username" placeholder="用户名" autocomplete="username">
+        <input id="password" placeholder="密码" type="password" autocomplete="current-password">
+        <button class="primary" type="submit">进入</button>
+        <p id="login-error" class="error"></p>
+      </form>
+    </section>
+    <section id="app" class="hidden">
+      <div class="tabs">
+        <button type="button" data-tab="kb" aria-pressed="true">知识库</button>
+        <button type="button" data-tab="docs">文档</button>
+        <button type="button" data-tab="users">用户与部门</button>
+      </div>
+      <div id="tab-kb" class="grid">
+        <form id="kb-form" class="card stack">
+          <h2>新建知识库</h2>
+          <input name="name" placeholder="名称" required>
+          <textarea name="description" placeholder="说明"></textarea>
+          <select name="visibility">
+            <option value="private">私有</option>
+            <option value="department">部门</option>
+            <option value="public">公开</option>
+          </select>
+          <div id="dept-checks" class="stack"></div>
+          <button class="primary" type="submit">创建</button>
+          <p id="kb-error" class="error"></p>
+        </form>
+        <div id="kb-table" class="card"></div>
+      </div>
+      <div id="tab-docs" class="grid hidden">
+        <form id="doc-form" class="card stack">
+          <h2>上传文档</h2>
+          <select id="doc-kb"></select>
+          <input id="doc-file" type="file" accept=".txt,.md,.markdown,.pdf">
+          <button class="primary" type="submit">上传并入库</button>
+          <p id="doc-error" class="error"></p>
+        </form>
+        <div id="doc-list" class="card stack"></div>
+      </div>
+      <div id="tab-users" class="hidden">
+        <div class="grid">
+          <form id="dept-form" class="card stack">
+            <h2>新建部门</h2>
+            <input name="code" placeholder="编码，如 FINANCE">
+            <input name="name" placeholder="名称">
+            <button class="primary" type="submit">添加部门</button>
+            <p id="dept-error" class="error"></p>
+          </form>
+          <div id="user-table" class="card"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/static/admin.js"></script>
+</body>
+</html>

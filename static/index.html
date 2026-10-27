@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAGKB 问答</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <strong>RAGKB</strong>
+      <span>按知识库回答，并给出依据</span>
+    </div>
+    <nav>
+      <span id="mode" class="badge">检测中</span>
+      <a href="/admin">管理端</a>
+    </nav>
+  </header>
+  <div class="layout">
+    <aside class="side">
+      <div class="muted">可访问的知识库</div>
+      <div id="kb-list" class="stack" style="margin-top:12px"></div>
+    </aside>
+    <main class="main">
+      <div id="messages" class="messages"></div>
+      <form id="ask-form" class="composer">
+        <input id="question" placeholder="例如：年假怎么计算？" autocomplete="off">
+        <button class="primary" type="submit">提问</button>
+      </form>
+      <p id="error" class="error"></p>
+    </main>
+  </div>
+  <script src="/static/guest.js"></script>
+</body>
+</html>

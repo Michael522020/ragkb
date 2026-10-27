@@ -1,0 +1,20 @@
+services:
+  ragkb:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-please-change-this-secret}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin123!}
+      SEED_DEMO: ${SEED_DEMO:-true}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.openai.com/v1}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      EMBEDDING_API_KEY: ${EMBEDDING_API_KEY:-}
+      EMBEDDING_BASE_URL: ${EMBEDDING_BASE_URL:-}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
+    volumes:
+      - ragkb-data:/app/data
+
+volumes:
+  ragkb-data:

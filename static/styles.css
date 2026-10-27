@@ -1,0 +1,130 @@
+:root {
+  color-scheme: light;
+  --bg: #f3efe6;
+  --panel: #fffdf8;
+  --ink: #1f1a17;
+  --muted: #6f675f;
+  --line: #e3dacd;
+  --accent: #0e6b57;
+  --accent-ink: #f4fff9;
+  --warn: #8a4b12;
+  --danger: #8d2d2d;
+  --shadow: 0 16px 40px rgba(60, 40, 20, 0.06);
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 420px at 10% -10%, rgba(14, 107, 87, 0.08), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--accent); }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.brand strong { font-size: 18px; letter-spacing: 0.04em; }
+.brand span, .muted { color: var(--muted); font-size: 13px; }
+.topbar nav { display: flex; gap: 8px; align-items: center; }
+.badge {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--panel);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 73px);
+}
+.side, .panel, .card {
+  background: var(--panel);
+}
+.side {
+  border-right: 1px solid var(--line);
+  padding: 18px;
+}
+.main { padding: 22px 28px 40px; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; gap: 8px; align-items: center; }
+.grow { flex: 1; }
+
+.kb-item, .doc-item, .cite, .msg {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: #fff;
+}
+.kb-item { text-align: left; width: 100%; }
+.kb-item.active { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.kb-item small, .doc-item small { display: block; color: var(--muted); margin-top: 4px; }
+
+.messages { display: flex; flex-direction: column; gap: 12px; min-height: 420px; }
+.msg.user { margin-left: 18%; background: #e7f4ef; }
+.msg.assistant { margin-right: 8%; }
+.msg p { margin: 0; white-space: pre-wrap; line-height: 1.6; }
+.cites { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.cite { background: #faf7f2; font-size: 13px; color: var(--muted); }
+
+.composer, .form {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+textarea { min-height: 84px; resize: vertical; }
+button.primary, button.ghost, button.danger {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+}
+button.primary { background: var(--accent); color: var(--accent-ink); }
+button.ghost { background: transparent; border-color: var(--line); }
+button.danger { background: transparent; color: var(--danger); border-color: #efcfcf; }
+button:disabled { opacity: 0.6; cursor: wait; }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: white; border-color: var(--ink); }
+.grid { display: grid; grid-template-columns: 320px 1fr; gap: 18px; }
+.card { border: 1px solid var(--line); border-radius: 18px; padding: 16px; box-shadow: var(--shadow); }
+.card h2 { margin: 0 0 12px; font-size: 16px; }
+.error { color: var(--danger); min-height: 1.2em; font-size: 13px; }
+.login-wrap {
+  max-width: 420px;
+  margin: 8vh auto;
+  padding: 0 16px;
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.hidden { display: none; }
+
+@media (max-width: 860px) {
+  .layout, .grid { grid-template-columns: 1fr; }
+  .side { border-right: 0; border-bottom: 1px solid var(--line); }
+  .msg.user { margin-left: 0; }
+}
